@@ -20,6 +20,7 @@ body, .container {
     background-color: #2fff63;
     float: left;
     padding-bottom: 50px;
+    border: solid red;
     
     
 }
