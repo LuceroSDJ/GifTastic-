@@ -1,10 +1,9 @@
 $(document).ready(function() {  
-
-//topic will change for testing purposes, I will use domestic pets
-
-//Initial array of animals
+    
+//Initiate global variables
+//Initial array of pets
 var pets = ['dog', 'cat', 'fish'];
-
+    
 //create funstion for displaying pets buttons
 function renderButtons() {
     //loop through the array of pets
@@ -17,13 +16,32 @@ function renderButtons() {
         //add button's text with the value of the pet at index i
         button.text(pets[i]);
         //append button to html #emptyDiv
-        $('#emptyDiv').append(button);
-        
+        $('#emptyDiv').append(button);   
     };
 };
+  
+//$(window).on('load', function() {
+    renderButtons();
+//});     windows on load function should render the buttons as soon as the page load, however, buttons are not generated as expected
 
-//call function for testing purposes
-renderButtons();
+
+//create .on('click') function that will trigger the AJAX call for the new button (user input) 
+$('#userRequestsNewGifs').on('click', function(event) {
+    event.preventDefault(); 
+    
+    //grab text from input box and create a variable & get rid of any spaces outside the text
+    var userInputText = $('#userSearch').val().trim();
+    console.log(userInputText);
+    //push user input to pets array
+    pets.push(userInputText);
+    
+    //empty div
+    $('#emptyDiv').empty();
+    
+    //call function to generate new button
+    renderButtons(); //BUG: buttons are multiplying. Try emptying the div before adding new  
+    
+});
 
 
 
@@ -47,27 +65,6 @@ $.ajax({
 });
 */
 
-
-
-//create .on('click') function that will trigger the AJAX call for the new button (user input) 
-$('#userRequestsNewGifs').on('click', function(event) {
-    event.preventDefault(); 
-    
-//grab text from input box and create a variable & get rid of any spaces outside the text
-var inputBoxText = $('#userSearch').val().trim();
-console.log(inputBoxText);
-//Then, construct Giphy URL 
-//Hit the queryURL with ajax then display the new button in the div
-$.ajax({
-    url: queryURL,
-    method: 'GET'
-}).then(function(response) {
-    //select the div where new buttons must be added & .text(inputBoxText)
-    //var button = $('<button>');
-
-});
-
-});
 
 //closes $(document).ready(function() {  
 });
