@@ -4,6 +4,9 @@
     margin: auto;
     justify-content: center;
     padding: 25px 0px 25px 0px;
+    border-top-right-radius: 20% 20%;
+    border-top-left-radius: 20% 20%;
+    border: solid orangered;
    
 }
 
@@ -18,15 +21,12 @@ body, .container {
 }
 
 .test { 
-    background-color: #2fff63;
+    background-color: #2fff63;  /*for browsers that do not support linear-fradient background*/
     float: left;
     padding-bottom: 50px;
     border: solid red;  
     background-image: linear-gradient(#2fff63, #ff6126); 
-}
-
-#description {
-    color: blue;
+    
 }
 
 button {
@@ -35,17 +35,34 @@ button {
     height: 80px;
     border-radius: 20%; 
     border: solid orangered;
+    justify-content: center;   
 }
+
 #userSearch {
     width: 100%;
     background-image: url(../images/background.gif);
     background-image: cover;
     font-size: 40px;
     border-radius: 20px;
+    color: greenyellow;
 }
 
 #userRequestsNewGifs {
     border-radius: 20px;
+    background-color: greenyellow;
+    border: solid orangered;
+    font-size: 20px;
+    color: blue;
+}
+
+#userRequestsNewGifs:hover {
+    background-color: #ff6126;
+    font-size: 24px;
+}
+
+label {
+    color: blue;
+    font-size: 22px;
 }
 
 /****************MEDIA QUERIES******************/

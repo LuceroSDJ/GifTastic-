@@ -44,7 +44,7 @@ $('#userRequestsNewGifs').on('click', function(event) {
 });
 
 
-
+//Search, Translate, and Random endpoints SUPPORT EMOJIS! 
 
 $(document).on('click', '.emoji', function() {
     $('#images').empty();
@@ -54,7 +54,7 @@ $(document).on('click', '.emoji', function() {
     //create .on('click') function that will trigger the AJAX call the button the user clicks
     //queryURL for Giphy API 
     //host: api.giphy.com ; path: /v1/gifs/search
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=10';
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=10';    
     //hit queryURL with AJAX, then add the response data into div with id of images
     $.ajax({
         url: queryURL,
@@ -88,13 +88,15 @@ $(document).on('click', '.emoji', function() {
                 image.attr('data-still', response[i].images.fixed_height_still.url);
                 image.attr('data-animate', response[i].images.fixed_height.url);   //'Original file size and file dimensions. Good for desktop use.'
                 image.attr('data-state', 'still');
+                image.attr('margin', '20px');
                 //image.css('float', 'left');
                 //append the image to the div
                 $('#images').append(image);
                 $('#images').append(displayRating);
-                
+                //select all gifs and add an on click event function
                 $('.gif').on('click', function() {
                     var state = $(this).attr('data-state');
+                    //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
                     if(state === 'still') {
                         $(this).attr('src', $(this).attr('data-animate'));
                         $(this).attr('data-state', 'animate');
