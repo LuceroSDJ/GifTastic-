@@ -2,7 +2,7 @@ $(document).ready(function() {
     
 //Initiate global variables
 //Initial array of pets
-var topics = ['dog', 'cat', 'fish'];
+var topics = ['🤓', '👻', '😻'];
     
 //create funstion for displaying pets buttons
 function renderButtons() {
@@ -13,6 +13,8 @@ function renderButtons() {
         button.addClass('pet');
         //add data-attribute with value of pets at index i
         button.attr('data-name', topics[i]);
+        button.css('borderRadius', '20px');
+        button.css('fontSize', '50px');
         //add button's text with the value of the pet at index i
         button.text(topics[i]);
         //append button to html #emptyDiv
@@ -44,17 +46,17 @@ $('#userRequestsNewGifs').on('click', function(event) {
 
 
 
-
+$(document).on('click', '.pet', function() {
 //function addGif() {
     
     //create .on('click') function that will trigger the AJAX call the button the user clicks
-$('button').on('click', function()  {
+//$('button').on('click', function()  {
     var buttonValue = $(this).attr('data-name');   //('data-name', pets[i])
     //construct URL to search for buttonValue 
     var APIkey = 'u2ENViYUD7u21pSzm2R0ydD1mJENc29L'
     //queryURL for Giphy API 
     //host: api.giphy.com ; path: /v1/gifs/search
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=2';
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=10';
     
     //hit queryURL with AJAX, then add the response data into div.span with id of images
     $.ajax({
@@ -95,6 +97,13 @@ $('button').on('click', function()  {
         
     });    
 });
+//};
+
+//test
+//$(document).on('click', '.pet', function() {
+   // var buttnValue = $(this).attr('data-name');
+   // addGif(buttnValue);
+//});
 
 /* FOR THE MOMENT, I DECIDED NOT TO USE THE METHOD OF CREATING A SEPARATE FUNCTION TO THEN CALL IT HERE
 //Now, I have to capture the value of the button when user clicks on it
@@ -106,9 +115,6 @@ $(document).on('click', '.pet', function() {
 });
 */
 
-
-
-///v1/stickers/random    FILTERS RESULTS BY RATING
 
 //closes $(document).ready(function() {  
 });
