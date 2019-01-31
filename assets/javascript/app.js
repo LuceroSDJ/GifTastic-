@@ -1,12 +1,12 @@
-$(document).ready(function() {  
+$(document).ready(function() {  //run once the page DOM is ready to execute lines of code inside this function
     
 //Initiate global variables
-//Initial array of pets
+//Initial array of emojis
 var topics = ['🤓', '👻', '😻'];
     
-//create funstion for displaying pets buttons
+//create function to display  buttons
 function renderButtons() {
-    //loop through the array of pets
+    //loop through the array of topics
     for(var i = 0; i < topics.length; i++) {
         //generate buttons for each emoji in the array on the fly
         var button = $('<button>');
@@ -22,14 +22,9 @@ function renderButtons() {
     };
 };
   
-//$(window).on('load', function() {
-renderButtons();   //call function to render initial buttons
-//});     windows on load function should render the buttons as soon as the page load, however, buttons are not generated as expected
+renderButtons();   //call function to generate initial buttons
 
-
-
-
-//create .on('click) function to capture user's input value, push the value into the array to render a new button
+//Capture user's input value, push the value into the array to render a new button
 $('#userRequestsNewGifs').on('click', function(event) {
     event.preventDefault(); 
     //grab text from input box and create a variable & get rid of any spaces outside the text
@@ -46,7 +41,8 @@ $('#userRequestsNewGifs').on('click', function(event) {
 
 //Search, Translate, and Random endpoints SUPPORT EMOJIS! 
 
-$(document).on('click', '.emoji', function() {
+$(document).on('click', '.emoji', function(event) {
+    event.preventDefault();
     $('#images').empty();
     var buttonValue = $(this).attr('data-name');   //('data-name', emojis[i])
     //construct URL to search for buttonValue 
@@ -77,62 +73,42 @@ $(document).on('click', '.emoji', function() {
                 displayRating.css('color', 'white');
                 //displayRating.css('float', 'left');
                 //append the rating to the div (i will prepend for now to see the most current git at the top)
-                
                 //create an image tag
                 var image = $('<img>');
                 image.addClass('gif');
                 //select the image being generated & store it in a variable
                 //var img = $(this).
                 //add src attribute to image tag from the result item
-                image.attr('src', response[i].images.fixed_height_still.url);     //'preview image for original'
+                image.attr('src', response[i].images.fixed_height_still.url);     
                 image.attr('data-still', response[i].images.fixed_height_still.url);
-                image.attr('data-animate', response[i].images.fixed_height.url);   //'Original file size and file dimensions. Good for desktop use.'
+                image.attr('data-animate', response[i].images.fixed_height.url);   
                 image.attr('data-state', 'still');
                 image.attr('margin', '20px');
                 //image.css('float', 'left');
                 //append the image to the div
                 $('#images').append(image);
                 $('#images').append(displayRating);
-                //select all gifs and add an on click event function
-                $('.gif').on('click', function() {
-                    var state = $(this).attr('data-state');
-                    //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
-                    if(state === 'still') {
-                        $(this).attr('src', $(this).attr('data-animate'));
-                        $(this).attr('data-state', 'animate');
-                    }else{
-                        $(this).attr('src', $(this).attr('data-still'));
-                        $(this).attr('data-state', 'still');
-                    }
-                });
             };
-        };
-        
-        
-        
-        //append GIFS in html page for default buttons
-        //$('#images').text(JSON.stringify(response));  //this returns a long list of links
-        
+        };   
     });    
+});    
+
+
+
+$(document).on('click', '.gif', function(event) {
+    event.preventDefault();
+    //select all gifs and add an on click event function
+    //$('.gif').on('click', function() {
+        var state = $(this).attr('data-state');
+        //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
+        if(state === 'still') {
+            $(this).attr('src', $(this).attr('data-animate'));
+            $(this).attr('data-state', 'animate');
+        }else{
+            $(this).attr('src', $(this).attr('data-still'));
+            $(this).attr('data-state', 'still');
+        }
+        
 });
-//};
 
-//test
-//$(document).on('click', '.pet', function() {
-    // var buttnValue = $(this).attr('data-name');
-    // addGif(buttnValue);
-    //});
-    
-    /* FOR THE MOMENT, I DECIDED NOT TO USE THE METHOD OF CREATING A SEPARATE FUNCTION TO THEN CALL IT HERE
-    //Now, I have to capture the value of the button when user clicks on it
-    //when user clicks on a button with class pet, add 10 pet gifs to images div
-$(document).on('click', '.pet', function() {
-    //var petName = $(this).attr('data-name');
-    //alert(petName);
-    addGif();
-});
-*/
-
-
-//closes $(document).ready(function() {  
 });

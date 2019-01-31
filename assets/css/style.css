@@ -23,7 +23,7 @@ body, .container {
 .test { 
     background-color: #2fff63;  /*for browsers that do not support linear-fradient background*/
     float: left;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     border: solid red;  
     background-image: linear-gradient(#2fff63, #ff6126); 
     
@@ -79,8 +79,14 @@ label {
         width: 220px;
         justify-content: center;
     }
-
-
+    .test {
+        padding: 5px;
+    }
+    #userRequestsNewGifs:hover {
+        background-color: #ff6126;
+        font-size: 15px;
+    }
+}
   
 
   
