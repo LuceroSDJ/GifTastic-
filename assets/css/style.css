@@ -82,9 +82,18 @@ label {
     .test {
         padding: 5px;
     }
-    #userRequestsNewGifs:hover {
-        background-color: #ff6126;
-        font-size: 15px;
+    label {
+        font-size: 18px;
+    }
+    #userRequestsNewGifs {
+        font-size: 18px;
+    }
+    #userSearch {
+        font-size: 22px;
+    }
+    button {
+        width: 80px;
+        height: 68px;
     }
 }
   

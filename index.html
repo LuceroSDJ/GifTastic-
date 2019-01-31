@@ -39,9 +39,33 @@
                     <!-- create form is for user input -->
                     <form id='userInputForm'>
                         <label>Add a new Emoji!:</label>
-                        <input id='userSearch' type='text'>
+                        <!--<input id='userSearch' type='text'> -->
                         <br><br>
-                        <input id='userRequestsNewGifs' value='New Search' type='submit'>
+                        <!-- Select element creates a drop-down list -->
+                        <form action="/action_page.php">
+                            <select id='userSearch' name="cars">
+                                <option>😀</option>
+                                <option>😎</option>
+                                <option>😱</option>
+                                <option>😆</option>
+                                <option>😌</option>
+                                <option>😅</option>
+                                <option>😘</option>
+                                <option>🤐</option>
+                                <option>😊</option>
+                                <option>😠</option>
+                                <option>😇</option>
+                                <option>🙃</option>
+                                <option>😭</option>
+                                <option>😉</option>
+                                </select>
+                                <br><br>
+                            <input id='userRequestsNewGifs' type="submit">
+                          </form>
+
+
+
+                        <!--<input id='userRequestsNewGifs' value='New Search' type='submit'> -->
                     </form>
                 </div>
                 <div class='col-md-9 test'>
