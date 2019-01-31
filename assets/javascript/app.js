@@ -71,11 +71,18 @@ $(document).on('click', '.emoji', function(event) {
                 //create a paragraph with the rating & store it in a variable
                 var displayRating = $('<p>').text('Rating: ' + rating);
                 displayRating.css('color', 'white');
+                displayRating.css('textAlign', 'center');
+                displayRating.css('display', 'inlineBlock');
+                displayRating.addClass('container');
+                displayRating.addClass('col-md-4');
                 //displayRating.css('float', 'left');
                 //append the rating to the div (i will prepend for now to see the most current git at the top)
                 //create an image tag
                 var image = $('<img>');
                 image.addClass('gif');
+                image.css('display', 'inlineBlock');
+                image.addClass('container');
+                image.addClass('col-md-6');
                 //select the image being generated & store it in a variable
                 //var img = $(this).
                 //add src attribute to image tag from the result item
@@ -84,6 +91,7 @@ $(document).on('click', '.emoji', function(event) {
                 image.attr('data-animate', response[i].images.fixed_height.url);   
                 image.attr('data-state', 'still');
                 image.attr('margin', '20px');
+                
                 //image.css('float', 'left');
                 //append the image to the div
                 $('#images').append(image);
