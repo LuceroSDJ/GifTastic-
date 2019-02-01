@@ -4,11 +4,19 @@
     margin: auto;
     justify-content: center;
     padding: 25px 0px 25px 0px;
-    border-top-right-radius: 20% 20%;
-    border-top-left-radius: 20% 20%;
+    border-top-right-radius: 20% 50%;
+    border-top-left-radius: 20% 50%;
+    border-bottom-right-radius: 3% 100%;
+    border-bottom-left-radius: 3% 100%;
     border: solid orangered;
     font-family: 'Press Start 2P', cursive;
     color: purple;
+}
+
+#headerRow p {
+    color: orangered;
+    font-family: 'VT323', monospace;
+    font-size: 30px;   
 }
 
 .g {
@@ -46,21 +54,28 @@ body, .container {
 }
 
 .test { 
-    background-color: #2fff63;  /*for browsers that do not support linear-fradient background*/
     float: left;
     padding-bottom: 20px;
     border: solid red;  
-    background-image: linear-gradient(#2fff63, #ff6126); 
-    
+    background-color: #2fff63;  /*for browsers that do not support linear-fradient background*/
+    background-image: linear-gradient(#ff6126,#2fff63, #ff6126);    
 }
 
 button {
     background-color: greenyellow;
-    width: 100px;
+    background-image: linear-gradient(#ff6126,#2fff63, #ff6126); 
+    width: 85px;
     height: 80px;
-    border-radius: 20%; 
     border: solid orangered;
-    justify-content: center;   
+    justify-content: center; 
+}
+button:hover {
+    background-image: url(../images/background2.gif);
+}
+.emoji {
+    font-size: 56px; 
+    border-radius: 20px; 
+    background-image: linear-gradient(#2fff63, #ff6126); 
 }
 
 #userSearch, option {
@@ -74,21 +89,43 @@ button {
 
 #userRequestsNewGifs {
     border-radius: 20px;
-    background-color: greenyellow;
     border: solid orangered;
-    font-size: 20px;
+    font-size: 26px;
     color: blue;
+    font-family: 'VT323', monospace;
+    background-color: greenyellow;
+    background-image: linear-gradient(#ff6126,#2fff63, #ff6126); 
 }
 
 #userRequestsNewGifs:hover {
     background-color: #ff6126;
     font-size: 24px;
+    font-family: 'Bungee Inline', cursive;
+    background-image: url(../images/background2.gif);
+    color: lightskyblue;
 }
 
 label {
     color: blue;
     font-size: 22px;
+    font-family: 'Bungee Inline', cursive;
 }
+#images p {
+    color: white;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 20px;
+    text-align: center;
+    /*display: inline-block;*/
+    background-image: url(../images/background.gif); 
+
+}
+img {
+    /*display: inline-block;*/
+    background-image: url(../images/background.gif);
+    margin-top: 5px;
+}
+
+
 
 /****************MEDIA QUERIES******************/
 
@@ -99,7 +136,7 @@ label {
     }
 }
 
-
+/*app is fully mobile responsive*/
 /** phone in landscape screen size **/
 @media screen and (max-width: 640px) {
     
@@ -107,7 +144,7 @@ label {
         padding-bottom: 5px;
     }
     label {
-        font-size: 18px;
+        font-size: 16px;
     }
     #userRequestsNewGifs {
         font-size: 18px;
@@ -116,9 +153,19 @@ label {
         font-size: 22px;
     }
     button {
-        width: 80px;
-        height: 68px;
+        width: 75px;
+        height: 65px;
     }
+    .emoji {
+        font-size: 40px;
+    }
+    #headerRow h1{
+        font-size: 26px;
+    }
+    #headerRow p {
+        font-size: 21px;
+    }
+
 }
 
   

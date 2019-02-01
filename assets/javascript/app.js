@@ -1,6 +1,6 @@
 $(document).ready(function() {  //run once the page DOM is ready to execute lines of code inside this function
     
-//Initiate global variables
+//Initiate global variable
 //Initial array of emojis
 var topics = ['🤓', '👻', '😻'];
     
@@ -13,9 +13,7 @@ function renderButtons() {
         button.addClass('emoji');
         //add data-attribute with value of emoji at index i
         button.attr('data-name', topics[i]);
-        button.css('borderRadius', '20px');
-        button.css('fontSize', '50px');
-        //add button's text with the value of the emoji at index i
+        //add button's value of the emoji at index i
         button.text(topics[i]);
         //append button to html #emptyDiv
         $('#emptyDiv').append(button);   
@@ -38,16 +36,16 @@ $('#userRequestsNewGifs').on('click', function(event) {
     renderButtons();
 });
 
-
 //Search, Translate, and Random endpoints SUPPORT EMOJIS! 
 
+//on click event function responds when image with class emoji is clicked
 $(document).on('click', '.emoji', function(event) {
     event.preventDefault();
     $('#images').empty();
     var buttonValue = $(this).attr('data-name');   //('data-name', emojis[i])
-    //construct URL to search for buttonValue 
+    //trigger the AJAX call when user clicks on a button
     var APIkey = 'u2ENViYUD7u21pSzm2R0ydD1mJENc29L'
-    //create .on('click') function that will trigger the AJAX call the button the user clicks
+    //construct URL to search for buttonValue 
     //queryURL for Giphy API 
     //host: api.giphy.com ; path: /v1/gifs/search
     var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=10';    
@@ -64,35 +62,23 @@ $(document).on('click', '.emoji', function(event) {
         var response = response.data;
         //loop through the response item
         for(var i = 0; i < response.length; i++) {
-            //do not display pg-13 or r rated images & display the corresponding rating to the images appended to html
+            //do not display pg-13 or r rated images & display the corresponding rating under the images & appended to html
             if(response[i].rating !== 'r' && response[i].rating !== 'pg-13') {
                 //create a variable to store the response's rating
                 var rating = response[i].rating;
                 //create a paragraph with the rating & store it in a variable
-                var displayRating = $('<p>').text('Rating: ' + rating);
-                displayRating.css('color', 'white');
-                displayRating.css('textAlign', 'center');
-                displayRating.css('display', 'inlineBlock');
-                displayRating.addClass('container');
-                displayRating.addClass('col-md-4');
-                //displayRating.css('float', 'left');
-                //append the rating to the div (i will prepend for now to see the most current git at the top)
-                //create an image tag
+                var displayRating = $('<p>').text('RATING: ' + rating);
+                displayRating.addClass('col-md-6');
+                //create an image tag, store it in a variable, add a class
                 var image = $('<img>');
                 image.addClass('gif');
-                image.css('display', 'inlineBlock');
-                image.addClass('container');
                 image.addClass('col-md-6');
-                //select the image being generated & store it in a variable
-                //var img = $(this).
-                //add src attribute to image tag from the result item
+                //add src attribute & data-still & animate to image tag from the result item
                 image.attr('src', response[i].images.fixed_height_still.url);     
                 image.attr('data-still', response[i].images.fixed_height_still.url);
                 image.attr('data-animate', response[i].images.fixed_height.url);   
                 image.attr('data-state', 'still');
-                image.attr('margin', '20px');
-                
-                //image.css('float', 'left');
+                //append the rating to the div 
                 //append the image to the div
                 $('#images').append(image);
                 $('#images').append(displayRating);
@@ -102,11 +88,9 @@ $(document).on('click', '.emoji', function(event) {
 });    
 
 
-
-$(document).on('click', '.gif', function(event) {
-    event.preventDefault();
-    //select all gifs and add an on click event function
-    //$('.gif').on('click', function() {
+//select all gifs and add an on click event function (document).on click
+$(document).on('click', '.gif', function() {
+    //capture data-state attribute and store it in a variable
         var state = $(this).attr('data-state');
         //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
         if(state === 'still') {
@@ -115,8 +99,7 @@ $(document).on('click', '.gif', function(event) {
         }else{
             $(this).attr('src', $(this).attr('data-still'));
             $(this).attr('data-state', 'still');
-        }
-        
+        }       
 });
 
-});
+});  //closes $(document).ready(function() 
