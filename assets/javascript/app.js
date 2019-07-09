@@ -93,15 +93,15 @@ $(document).on('click', '.emoji', function(event) {
 //select all gifs and add an on click event function (document).on click
 $(document).on('click', '.gif', function() {
     //capture data-state attribute and store it in a variable
-        var state = $(this).attr('data-state');
-        //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
-        if(state === 'still') {
-            $(this).attr('src', $(this).attr('data-animate'));
-            $(this).attr('data-state', 'animate');
-        }else{
-            $(this).attr('src', $(this).attr('data-still'));
-            $(this).attr('data-state', 'still');
-        }       
+    var state = $(this).attr('data-state');
+    //conditions: if a gif's current status is data-still, change it to data-animate & vice-versa
+    if(state === 'still') {
+        $(this).attr('src', $(this).attr('data-animate'));
+        $(this).attr('data-state', 'animate');
+    }else{
+        $(this).attr('src', $(this).attr('data-still'));
+        $(this).attr('data-state', 'still');
+    }       
 });
 
 });  //closes $(document).ready(function() 
