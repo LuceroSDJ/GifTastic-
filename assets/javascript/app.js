@@ -25,7 +25,7 @@ renderButtons();   //call function to generate initial buttons
 //Capture user's input value, push the value into the array to render a new button
 $('#userRequestsNewGifs').on('click', function(event) {
     event.preventDefault(); 
-    //grab text from input box and create a variable & get rid of any spaces outside the text
+    //grab text(emoji value) from input box and create a variable & get rid of any spaces outside the text
     var userInputText = $('#userSearch').val().trim();
     console.log(userInputText);
     //push user input to topics array
@@ -36,18 +36,20 @@ $('#userRequestsNewGifs').on('click', function(event) {
     renderButtons();
 });
 
-//Search, Translate, and Random endpoints SUPPORT EMOJIS! 
+//GIPHY API documentation: Search, Translate, and Random endpoints SUPPORT EMOJIS! 
 
+//event delegation
 //on click event function responds when image with class emoji is clicked
 $(document).on('click', '.emoji', function(event) {
     event.preventDefault();
     $('#images').empty();
     var buttonValue = $(this).attr('data-name');   //('data-name', emojis[i])
     //trigger the AJAX call when user clicks on a button
-    var APIkey = 'u2ENViYUD7u21pSzm2R0ydD1mJENc29L'
+    //GHIPHY API provides an APIkey unique to each user.
+    var APIkey = 'u2ENViYUD7u21pSzm2R0ydD1mJENc29L';
     //construct URL to search for buttonValue 
     //queryURL for Giphy API 
-    //host: api.giphy.com ; path: /v1/gifs/search
+    //[documentation] host: api.giphy.com ; path: /v1/gifs/search
     var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonValue +  '&api_key=' + APIkey + '&limit=10';    
     //hit queryURL with AJAX, then add the response data into div with id of images
     $.ajax({
