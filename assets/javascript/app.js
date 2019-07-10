@@ -39,11 +39,11 @@ $('#userRequestsNewGifs').on('click', function(event) {
 //GIPHY API documentation: Search, Translate, and Random endpoints SUPPORT EMOJIS! 
 
 //event delegation
-//on click event function responds when image with class emoji is clicked
+//on click event function responds when button with class emoji is clicked
 $(document).on('click', '.emoji', function(event) {
     event.preventDefault();
     $('#images').empty();
-    var buttonValue = $(this).attr('data-name');   //('data-name', emojis[i])
+    var buttonValue = $(this).attr('data-name');   //either ('data-name', emojis[i]) or .txt() method work
     //trigger the AJAX call when user clicks on a button
     //GHIPHY API provides an APIkey unique to each user.
     var APIkey = 'u2ENViYUD7u21pSzm2R0ydD1mJENc29L';
@@ -89,7 +89,7 @@ $(document).on('click', '.emoji', function(event) {
     });    
 });    
 
-
+//event delegation
 //select all gifs and add an on click event function (document).on click
 $(document).on('click', '.gif', function() {
     //capture data-state attribute and store it in a variable
